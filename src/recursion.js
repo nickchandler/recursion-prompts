@@ -31,10 +31,8 @@ var sum = function(array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-  //create copy of input
   let copy = array.slice(0);
-  //base case:
-  //  array length === 0 
+
   if(Array.isArray(copy[copy.length - 1])) { //need to put this if statement at the top so that function does not evaluate an array with a single nested array as 0
     return arraySum(copy.pop()) + arraySum(copy);
   }
@@ -42,31 +40,50 @@ var arraySum = function(array) {
   if(!array.length) {
     return 0;
   }
-  //  array length === 1
   if(array.length === 1) {
     return array[0];
   }
-  //  if(Array.isArray(copy[copy.length - 1]) return sum(copy.pop) + arraySum(copy);
   
 
   return copy.pop() + arraySum(copy);
 
-  // else return copy.pop() + arraySum(copy)
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  if(n === 0) return true;
+  else if(n === - 1) return false;
+  else {
+    if(n < 0) n = n * -1;
+    n -= 2;
+    return isEven(n);
+  }
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  if(n < 0) {
+    if(n === 0) return 0;
+    n++ 
+    return n + sumBelow(n);
+
+  } else {
+    if(n === 0) return 0;
+    n--;
+  return (n + sumBelow(n));
+  }
+  
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  //array to push values to 
+
+  //base case: value === y --do not push
+  //recursive case: value does not equal x or y, push value, return range(value + 1);
 };
 
 // 7. Compute the exponent of a number.
