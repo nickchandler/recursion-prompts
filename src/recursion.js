@@ -89,14 +89,16 @@ var range = function(x, y) {
       let lesser = x;
       lesser++;
   
-      output.push(x, range(lesser, y));
+      output.push(lesser);
+      return output.concat(range(lesser, y));
     }
   
     if(x > y) {
       let greater = x;
       greater--;
   
-      output.push(greater, range(greater, y));
+      output.push(greater);
+      return output.concat(range(greater, y))
     } 
   };
 
@@ -263,7 +265,16 @@ var compareStr = function(str1, str2) {
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str) {
-  
+  //base: !str.length return output
+  if(!str.length) return [];
+
+  let output = [];
+
+  output.push(str[0]);
+  let newStr = str.slice(1);
+  return output.concat(createArray(newStr));
+
+  //recurse: return 
 };
 
 // 17. Reverse the order of an array
