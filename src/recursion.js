@@ -80,10 +80,26 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-  if(x === y || x - y === 1 || y - x === 1) return []; //need help with this one 
-
+  let output = [];
+  if(x === y || x - y === 1 || y - x === 1) {
+    return output
+  };  
   
-};
+    if(x < y) {
+      let lesser = x;
+      lesser++;
+  
+      output.push(x, range(lesser, y));
+    }
+  
+    if(x > y) {
+      let greater = x;
+      greater--;
+  
+      output.push(greater, range(greater, y));
+    } 
+  };
+
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -161,6 +177,31 @@ var modulo = function(x, y) { //need help with this one
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+  if(x > 0 && y <= 0) {
+    if(y === 0) return 0;
+    if(y === -1) return -x;
+
+    y++;
+
+    return -x + multiply(x, y);
+  }
+
+  if(x < 0 && y <= 0) {
+    if(y === 0) return 0;
+    if(y === - 1) return -x;
+
+    y++;
+
+    return -x + multiply(x, y);
+  }
+
+  if(y === 0) return 0;
+  if(y === 1) return x;
+
+  y--;
+
+  return x + multiply(x, y);
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
