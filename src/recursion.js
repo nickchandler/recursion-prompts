@@ -165,15 +165,19 @@ var palindrome = function(string) {
 // modulo(5,2) // 1
 // modulo(17,5) // 2
 // modulo(22,6) // 4
-var modulo = function(x, y) { //need help with this one
+var modulo = function(x, y) { 
+  if(x === 0 && y === 0) return NaN;
+  if(x === y) return 0;
   if(x < y) {
     return x;
   }
 
-  let dividend = x;
-  dividend = dividend - y;
+  
 
-  return modulo(dividend, y);
+  
+  x = x - y;
+
+  return modulo(x, y);
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
@@ -345,6 +349,15 @@ var countOccurrence = function(array, value) {
 // 21. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback) {
+  let output = [];
+  if(array.length === 0) return output;
+
+
+  output.push(callback(array[0]));
+  let arrayCopy = array.slice(1);
+  return output.concat(rMap(arrayCopy, callback));
+
+
 };
 
 // 22. Write a function that counts the number of times a key occurs in an object.
