@@ -166,15 +166,24 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) { 
-  if(x === 0 && y === 0) return NaN;
+  if(y === 0) return NaN;
   if(x === y) return 0;
+
+  
+
+  if(x < 0 && -x < y) return x; 
+  if(x < 0) x = -x;
+  if(y < 0) y = -y;
+
+
   if(x < y) {
     return x;
   }
 
-  
+  if(x < y && x < 0) {
+    return -x;
+  }
 
-  
   x = x - y;
 
   return modulo(x, y);
@@ -352,12 +361,9 @@ var rMap = function(array, callback) {
   let output = [];
   if(array.length === 0) return output;
 
-
   output.push(callback(array[0]));
   let arrayCopy = array.slice(1);
   return output.concat(rMap(arrayCopy, callback));
-
-
 };
 
 // 22. Write a function that counts the number of times a key occurs in an object.
@@ -365,6 +371,11 @@ var rMap = function(array, callback) {
 // countKeysInObj(obj, 'r') // 1
 // countKeysInObj(obj, 'e') // 2
 var countKeysInObj = function(obj, key) {
+  //base: 
+
+
+
+
 };
 
 // 23. Write a function that counts the number of times a value occurs in an object.
